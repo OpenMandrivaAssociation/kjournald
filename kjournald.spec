@@ -25,6 +25,7 @@ BuildRequires: cmake(Qt5Test)
 BuildRequires: cmake(Qt5Widgets)
 BuildRequires: cmake(KF5CoreAddons)
 BuildRequires: cmake(KF5I18n)
+BuildRequires: pkgconfig(libsystemd)
 
 %description
 Graphical frontend for viewing the system journal
