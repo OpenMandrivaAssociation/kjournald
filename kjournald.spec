@@ -12,6 +12,19 @@ URL: https://github.com/kjournald/kjournald
 License: GPL
 Group: System
 BuildRequires: cmake ninja
+BuildRequires: cmake(ECM)
+BuildRequires: cmake(Qt5)
+BuildRequires: cmake(Qt5Core)
+BuildRequires: cmake(Qt5Network)
+BuildRequires: cmake(Qt5Qml)
+BuildRequires: cmake(Qt5QmlModels)
+BuildRequires: cmake(Qt5Gui)
+BuildRequires: cmake(Qt5Quick)
+BuildRequires: cmake(Qt5QuickControls2)
+BuildRequires: cmake(Qt5Test)
+BuildRequires: cmake(Qt5Widgets)
+BuildRequires: cmake(KF5CoreAddons)
+BuildRequires: cmake(KF5I18n)
 
 %description
 Graphical frontend for viewing the system journal
