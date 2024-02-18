@@ -1,11 +1,22 @@
+%define git 20240218
+%define gitbranch release/24.02
+%define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 Name: plasma6-kjournald
-Version: 24.01.95
-Release: 1
+Version: 24.01.96
+Release: %{?git:0.%{git}.}1
 %if 0%{?git:1}
+%if 0%{?git:1}
+Source0:	https://invent.kde.org/system/kjournald/-/archive/%{gitbranch}/kjournald-%{gitbranchd}.tar.bz2#/kjournald-%{git}.tar.bz2
+%else
 Source0:        https://invent.kde.org/system/%{name}/-/archive/master/%{name}-master.tar.bz2
+%endif
+%else
+%if 0%{?git:1}
+Source0:	https://invent.kde.org/system/kjournald/-/archive/%{gitbranch}/kjournald-%{gitbranchd}.tar.bz2#/kjournald-%{git}.tar.bz2
 %else
 Source0:        https://download.kde.org/%{stable}/release-service/%{version}/src/kjournald-%{version}.tar.xz
+%endif
 %endif
 Summary: Graphical frontend for viewing the system journal
 URL: https://github.com/kjournald/kjournald
@@ -31,7 +42,7 @@ BuildRequires: pkgconfig(libsystemd)
 Graphical frontend for viewing the system journal
 
 %prep
-%autosetup -p1 -n kjournald-%{?git:master}%{!?git:%{version}}
+%autosetup -p1 -n kjournald-%{?git:%{gitbranchd}}%{!?git:%{version}}
 %cmake \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
 	-G Ninja -G Ninja
