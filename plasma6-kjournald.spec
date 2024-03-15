@@ -4,7 +4,7 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 Name: plasma6-kjournald
 Version: 24.02.0
-Release: %{?git:0.%{git}.}1
+Release: %{?git:0.%{git}.}2
 %if 0%{?git:1}
 %if 0%{?git:1}
 Source0:	https://invent.kde.org/system/kjournald/-/archive/%{gitbranch}/kjournald-%{gitbranchd}.tar.bz2#/kjournald-%{git}.tar.bz2
