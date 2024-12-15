@@ -3,7 +3,7 @@
 %define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 Name: plasma6-kjournald
-Version: 24.08.3
+Version: 24.12.0
 Release: %{?git:0.%{git}.}1
 %if 0%{?git:1}
 %if 0%{?git:1}
@@ -60,3 +60,4 @@ Graphical frontend for viewing the system journal
 %{_datadir}/applications/org.kde.kjournaldbrowser.desktop
 %{_datadir}/metainfo/org.kde.kjournaldbrowser.appdata.xml
 %{_datadir}/qlogging-categories6/kjournald.categories
+%{_qtdir}/qml/org/kde/kjournald
