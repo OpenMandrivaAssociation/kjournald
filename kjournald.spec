@@ -3,7 +3,7 @@
 %define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 Name: kjournald
-Version: 25.04.0
+Version: 25.04.3
 Release: %{?git:0.%{git}.}1
 %if 0%{?git:1}
 %if 0%{?git:1}
@@ -39,23 +39,15 @@ BuildRequires: cmake(KF6Crash)
 BuildRequires: cmake(KF6I18n)
 BuildRequires: pkgconfig(libsystemd)
 
+%rename plasma6-kjournald
+
+BuildSystem:	cmake
+BuildOption:	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
+
 %description
 Graphical frontend for viewing the system journal
 
-%prep
-%autosetup -p1 -n kjournald-%{?git:%{gitbranchd}}%{!?git:%{version}}
-%cmake \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
-	-G Ninja -G Ninja
-
-%build
-%ninja_build -C build
-
-%install
-%ninja_install -C build
-%find_lang kjournald
-
-%files -f kjournald.lang
+%files -f %{name}.lang
 %{_bindir}/kjournaldbrowser
 %{_libdir}/libkjournald.so*
 %{_datadir}/applications/org.kde.kjournaldbrowser.desktop
