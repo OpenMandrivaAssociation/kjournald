@@ -39,6 +39,7 @@ BuildRequires: cmake(KF6Config)
 BuildRequires: cmake(KF6Crash)
 BuildRequires: cmake(KF6I18n)
 BuildRequires: cmake(KF6Kirigami)
+BuildRequires: cmake(KF6KirigamiAddons)
 BuildRequires: pkgconfig(libsystemd)
 
 %rename plasma6-kjournald
