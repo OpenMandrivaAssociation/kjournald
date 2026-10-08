@@ -3,8 +3,8 @@
 %define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 Name: kjournald
-Version: 26.08.1
-Release: %{?git:0.%{git}.}2
+Version: 26.08.2
+Release: %{?git:0.%{git}.}1
 %if 0%{?git:1}
 %if 0%{?git:1}
 Source0:	https://invent.kde.org/system/kjournald/-/archive/%{gitbranch}/kjournald-%{gitbranchd}.tar.bz2#/kjournald-%{git}.tar.bz2
